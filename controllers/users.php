@@ -40,7 +40,9 @@ class Users extends CI_Controller {
 
 		$this->session->set_flashdata('login_success', 'You are now logged in');
 
-		redirect('home/index');
+		//redirect('home/index');
+		$data['main_view'] = "admin_view";
+		$this->load->view('layouts/main', $data);
 
 
 		}
@@ -58,6 +60,10 @@ class Users extends CI_Controller {
 	}
 
 
+		public function logout() {
+			$this->session->sess_destroy();
+			redirect('home/index');
+		}
 
 }
 
